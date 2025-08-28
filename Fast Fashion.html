@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Fashion - Trendy Clothing & Shoes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for enhancements */
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .cart-item-enter {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        .cart-item-enter-active {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 300ms ease-in;
+        }
+        .cart-item-exit {
+            opacity: 1;
+        }
+        .cart-item-exit-active {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 300ms ease-in;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .filter-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <span class="text-xl font-bold text-blue-600">FAST FASHION</span>
+                    </a>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="#" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                        <a href="#products" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Shop</a>
+                        <a href="#categories" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Categories</a>
+                        <a href="#about" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <span>Sign in</span>
+                        </button>
+                    </div>
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button id="search-btn" class="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <span class="sr-only">Search</span>
+                            <i class="fas fa-search h-6 w-6"></i>
+                        </button>
+                        <div class="ml-4 relative">
+                            <button id="cart-btn" class="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                <span class="sr-only">Cart</span>
+                                <i class="fas fa-shopping-cart h-6 w-6"></i>
+                                <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden bg-white shadow-md">
+        <div class="flex justify-around py-3">
+            <a href="#" class="text-blue-600"><i class="fas fa-home"></i></a>
+            <a href="#products" class="text-gray-600"><i class="fas fa-store"></i></a>
+            <a href="#categories" class="text-gray-600"><i class="fas fa-list"></i></a>
+            <a href="#about" class="text-gray-600"><i class="fas fa-info-circle"></i></a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Trendy Styles for Every Occasion</h1>
+            <p class="text-xl md:text-2xl mb-8">Discover the latest fashion trends at unbeatable prices</p>
+            <a href="#products" class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition duration-300 inline-block">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Shop by Category</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="category-card bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Men's Clothing" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">Men's Wear</h3>
+                        <button class="mt-2 text-blue-600 hover:text-blue-800">Shop Now</button>
+                    </div>
+                </div>
+                <div class="category-card bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Women's Clothing" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">Women's Wear</h3>
+                        <button class="mt-2 text-blue-600 hover:text-blue-800">Shop Now</button>
+                    </div>
+                </div>
+                <div class="category-card bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Shoes" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">Footwear</h3>
+                        <button class="mt-2 text-blue-600 hover:text-blue-800">Shop Now</button>
+                    </div>
+                </div>
+                <div class="category-card bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="Accessories" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">Accessories</h3>
+                        <button class="mt-2 text-blue-600 hover:text-blue-800">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold">Our Products</h2>
+                <div class="flex space-x-2">
+                    <button class="filter-btn active px-4 py-2 rounded-full bg-blue-100 text-blue-600" data-category="all">All</button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-600" data-category="men">Men</button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-600" data-category="women">Women</button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-600" data-category="shoes">Shoes</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="products-container">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-8 md:p-12 text-white">
+                <div class="md:flex items-center justify-between">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <h2 class="text-3xl font-bold mb-4">Summer Sale!</h2>
+                        <p class="text-xl mb-6">Up to 50% off on selected items. Limited time offer.</p>
+                        <a href="#products" class="bg-white text-blue-600 px-6 py-2 rounded-full font-bold hover:bg-gray-100 transition duration-300 inline-block">Shop the Sale</a>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Summer Sale" class="rounded-lg shadow-xl max-h-64">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 rounded-full bg-gray-300 overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Customer" class="h-full w-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sarah Johnson</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"I love shopping at Fast Fashion! The quality is amazing for the price and delivery is always super fast."</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 rounded-full bg-gray-300 overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Customer" class="h-full w-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Michael Chen</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Great selection of trendy clothes. I've bought several items and they've all held up well after multiple washes."</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 rounded-full bg-gray-300 overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="h-full w-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Emma Davis</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The customer service is outstanding. Had an issue with sizing and they exchanged it immediately with free return shipping."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h2 class="text-3xl font-bold mb-6">About Fast Fashion</h2>
+                    <p class="text-gray-600 mb-4">Founded in 2020, Fast Fashion has quickly become a go-to destination for trendy, affordable clothing and footwear for men and women.</p>
+                    <p class="text-gray-600 mb-4">Our mission is to make fashion accessible to everyone without compromising on style or quality. We work directly with manufacturers to cut out middlemen and pass the savings to you.</p>
+                    <p class="text-gray-600">With new arrivals every week, you'll always find the latest styles at prices that won't break the bank.</p>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Our Store" class="rounded-lg shadow-xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-blue-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+            <p class="text-xl mb-8">Subscribe to our newsletter for exclusive offers and new arrivals</p>
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l-lg focus:outline-none text-gray-900">
+                <button class="bg-blue-800 px-6 py-3 rounded-r-lg font-bold hover:bg-blue-900 transition duration-300">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Fast Fashion</h3>
+                    <p class="text-gray-400">Trendy clothing and footwear at affordable prices.</p>
+                    <div class="flex mt-4 space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Men's Clothing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Women's Clothing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Footwear</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">New Arrivals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Customer Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Track Order</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns & Exchanges</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">123 Fashion Street</li>
+                        <li class="text-gray-400">New York, NY 10001</li>
+                        <li class="text-gray-400">info@fastfashion.com</li>
+                        <li class="text-gray-400">+1 (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Fast Fashion. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg p-6 w-full max-w-md">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Search Products</h3>
+                <button id="close-search" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="relative">
+                <input type="text" placeholder="What are you looking for?" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button class="absolute right-3 top-3 text-gray-500 hover:text-blue-600">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-full md:w-96 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">Your Cart (<span id="sidebar-cart-count">0</span>)</h3>
+                <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="space-y-4">
+                <!-- Cart items will be added here -->
+                <p id="empty-cart-message" class="text-gray-500 text-center py-8">Your cart is empty</p>
+            </div>
+            <div class="border-t border-gray-200 mt-6 pt-6">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Subtotal</span>
+                    <span id="cart-subtotal" class="font-semibold">$0.00</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Shipping</span>
+                    <span class="font-semibold">Free</span>
+                </div>
+                <div class="flex justify-between text-lg font-bold mt-4">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button id="checkout-btn" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold mt-6 hover:bg-blue-700 transition duration-300">Checkout</button>
+                <a href="#products" class="block text-center text-blue-600 mt-4 hover:text-blue-800">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div id="quick-view-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 id="quick-view-title" class="text-2xl font-bold"></h3>
+                    <button id="close-quick-view" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="md:flex gap-6">
+                    <div class="md:w-1/2 mb-6 md:mb-0">
+                        <img id="quick-view-image" src="" alt="" class="w-full rounded-lg">
+                        <div class="grid grid-cols-4 gap-2 mt-4">
+                            <img src="" alt="" class="cursor-pointer border rounded hover:border-blue-500 h-16 object-cover">
+                            <img src="" alt="" class="cursor-pointer border rounded hover:border-blue-500 h-16 object-cover">
+                            <img src="" alt="" class="cursor-pointer border rounded hover:border-blue-500 h-16 object-cover">
+                            <img src="" alt="" class="cursor-pointer border rounded hover:border-blue-500 h-16 object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600">(42 reviews)</span>
+                        </div>
+                        <p id="quick-view-price" class="text-2xl font-bold text-blue-600 mb-4"></p>
+                        <p id="quick-view-description" class="text-gray-600 mb-6"></p>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">Size</label>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="px-4 py-2 border rounded hover:bg-gray-100 focus:bg-blue-100 focus:border-blue-500">XS</button>
+                                <button class="px-4 py-2 border rounded hover:bg-gray-100 focus:bg-blue-100 focus:border-blue-500">S</button>
+                                <button class="px-4 py-2 border rounded hover:bg-gray-100 focus:bg-blue-100 focus:border-blue-500">M</button>
+                                <button class="px-4 py-2 border rounded hover:bg-gray-100 focus:bg-blue-100 focus:border-blue-500">L</button>
+                                <button class="px-4 py-2 border rounded hover:bg-gray-100 focus:bg-blue-100 focus:border-blue-500">XL</button>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">Color</label>
+                            <div class="flex gap-2">
+                                <button class="w-8 h-8 rounded-full bg-black border-2 border-gray-300 focus:border-blue-500"></button>
+                                <button class="w-8 h-8 rounded-full bg-blue-600 border-2 border-gray-300 focus:border-blue-500"></button>
+                                <button class="w-8 h-8 rounded-full bg-red-500 border-2 border-gray-300 focus:border-blue-500"></button>
+                                <button class="w-8 h-8 rounded-full bg-gray-300 border-2 border-gray-300 focus:border-blue-500"></button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center mb-6">
+                            <label class="block text-gray-700 mr-4">Quantity</label>
+                            <div class="flex items-center border rounded">
+                                <button class="px-3 py-1 text-xl">-</button>
+                                <span class="px-4 py-1 border-x">1</span>
+                                <button class="px-3 py-1 text-xl">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <button id="add-to-cart-quick" class="flex-1 bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition duration-300">Add to Cart</button>
+                            <button class="p-3 border rounded-lg hover:bg-gray-100">
+                                <i class="far fa-heart text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Product data
+        const products = [
+            // Men's Clothing (10 items)
+            {
+                id: 1,
+                name: "Men's Slim Fit T-Shirt",
+                price: 19.99,
+                image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
+                category: "men",
+                description: "Comfortable slim fit t-shirt made from 100% cotton. Available in multiple colors."
+            },
+            {
+                id: 2,
+                name: "Men's Casual Button-Down Shirt",
+                price: 29.99,
+                image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80",
+                category: "men",
+                description: "Versatile button-down shirt perfect for casual or semi-formal occasions."
+            },
+            {
+                id: 3,
+                name: "Men's Classic Jeans",
+                price: 39.99,
+                image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                category: "men",
+                description: "Classic fit jeans with a comfortable stretch for all-day wear."
+            },
+            {
+                id: 4,
+                name: "Men's Hooded Sweatshirt",
+                price: 34.99,
+                image: "https://images.unsplash.com/photo-1527719327859-c6ce80353573?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                category: "men",
+                description: "Warm and comfortable hoodie perfect for cooler weather."
+            },
+            {
+                id: 5,
+                name: "Men's Chino Pants",
+                price: 32.99,
+                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80",
+                category: "men",
+                description: "Stylish chino pants that can be dressed up or down."
+            },
+            {
+                id: 6,
+                name: "Men's Bomber Jacket",
+                price: 59.99,
+                image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                category: "men",
+                description: "Trendy bomber jacket with a lightweight design."
+            },
+            {
+                id: 7,
+                name: "Men's Polo Shirt",
+                price: 24.99,
+                image: "https://images.unsplash.com/photo-1527719327859-c6ce80353573?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                category: "men",
+                description: "Classic polo shirt with a modern fit."
+            },
+            {
+                id: 8,
+                name: "Men's Denim Jacket",
+                price: 49.99,
+                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80",
+                category: "men",
+                description: "Timeless denim jacket for a casual look."
+            },
+            {
+                id: 9,
+                name: "Men's Cargo Shorts",
+                price: 27.99,
+                image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                category: "men",
+                description: "Functional and stylish cargo shorts with multiple pockets."
+            },
+            {
+                id: 10,
+                name: "Men's Dress Shirt",
+                price: 35.99,
+                image: "https://images.unsplash.com/photo-1527719327859-c6ce80353573?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                category: "men",
+                description: "Formal dress shirt for business or special occasions."
+            },
+            
+            // Women's Clothing (10 items)
+            {
+                id: 11,
+                name: "Women's Floral Summer Dress",
+                price: 39.99,
+                image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=746&q=80",
+                category: "women",
+                description: "Lightweight floral dress perfect for summer days."
+            },
+            {
+                id: 12,
+                name: "Women's High-Waisted Jeans",
+                price: 44.99,
+                image: "https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1026&q=80",
+                category: "women",
+                description: "Flattering high-waisted jeans with a comfortable stretch."
+            },
+            {
+                id: 13,
+                name: "Women's Oversized Sweater",
+                price: 36.99,
+                image: "https://images.unsplash.com/photo-1618932260643-eee4a2f652a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                category: "women",
+                description: "Cozy oversized sweater for a relaxed look."
+            },
+            {
+                id: 14,
+                name: "Women's Blouse with Ruffles",
+                price: 29.99,
+                image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=734&q=80",
+                category: "women",
+                description: "Elegant blouse with delicate ruffles for a feminine touch."
+            },
+            {
+                id: 15,
+                name: "Women's Midi Skirt",
+                price: 32.99,
+                image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                category: "women",
+                description: "Versatile midi skirt that pairs well with any top."
+            },
+            {
+                id: 16,
+                name: "Women's Leather Jacket",
+                price: 79.99,
+                image: "https://images.unsplash.com/photo-1525450824786-227cbef70703?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                category: "women",
+                description: "Edgy faux leather jacket for a bold statement."
+            },
+            {
+                id: 17,
+                name: "Women's Jumpsuit",
+                price: 49.99,
+                image: "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80",
+                category: "women",
+                description: "Chic jumpsuit that's perfect for day or night."
+            },
+            {
+                id: 18,
+                name: "Women's Cardigan",
+                price: 34.99,
+                image: "https://images.unsplash.com/photo-1618932260643-eee4a2f652a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                category: "women",
+                description: "Lightweight cardigan for layering in any season."
+            },
+            {
+                id: 19,
+                name: "Women's Yoga Pants",
+                price: 28.99,
+                image: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                category: "women",
+                description: "Comfortable and stretchy yoga pants for workouts or lounging."
+            },
+            {
+                id: 20,
+                name: "Women's Blazer",
+                price: 54.99,
+                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80",
+                category: "women",
+                description: "Tailored blazer for a polished professional look."
+            },
+            
+            // Shoes (10 items)
+            {
+                id: 21,
+                name: "Men's Running Shoes",
+                price: 69.99,
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                category: "shoes",
+                description: "High-performance running shoes with cushioned soles."
+            },
+            {
+                id: 22,
+                name: "Women's Sneakers",
+                price: 59.99,
+                image: "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80",
+                category: "shoes",
+                description: "Trendy sneakers with comfortable memory foam insoles."
+            },
+            {
+                id: 23,
+                name: "Men's Dress Shoes",
+                price: 79.99,
+                image: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
+                category: "shoes",
+                description: "Classic leather dress shoes for formal occasions."
+            },
+            {
+                id: 24,
+                name: "Women's Ankle Boots",
+                price: 74.99,
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
+                category: "shoes",
+                description: "Stylish ankle boots with a comfortable low heel."
+            },
+            {
+                id: 25,
+                name: "Unisex Canvas Shoes",
+                price: 34.99,
+                image: "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80",
+                category: "shoes",
+                description: "Casual canvas shoes available in multiple colors."
+            },
+            {
+                id: 26,
+                name: "Men's Sandals",
+                price: 29.99,
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                category: "shoes",
+                description: "Comfortable sandals for summer wear."
+            },
+            {
+                id: 27,
+                name: "Women's Ballet Flats",
+                price: 39.99,
+                image: "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80",
+                category: "shoes",
+                description: "Elegant ballet flats with cushioned soles."
+            },
+            {
+                id: 28,
+                name: "Men's Hiking Boots",
+                price: 89.99,
+                image: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
+                category: "shoes",
+                description: "Durable hiking boots with waterproof construction."
+            },
+            {
+                id: 29,
+                name: "Women's High Heels",
+                price: 49.99,
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
+                category: "shoes",
+                description: "Classic high heels for special occasions."
+            },
+            {
+                id: 30,
+                name: "Unisex Slip-on Shoes",
+                price: 44.99,
+                image: "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80",
+                category: "shoes",
+                description: "Convenient slip-on shoes with memory foam cushioning."
+            },
+            
+            // Accessories (10 items)
+            {
+                id: 31,
+                name: "Leather Wallet",
+                price: 24.99,
+                image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
+                category: "accessories",
+                description: "Genuine leather wallet with multiple card slots."
+            },
+            {
+                id: 32,
+                name: "Fashion Watch",
+                price: 59.99,
+                image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
+                category: "accessories",
+                description: "Stylish fashion watch with stainless steel case."
+            },
+            {
+                id: 33,
+                name: "Crossbody Bag",
+                price: 39.99,
+                image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=738&q=80",
+                category: "accessories",
+                description: "Compact crossbody bag with adjustable strap."
+            },
+            {
+                id: 34,
+                name: "Aviator Sunglasses",
+                price: 29.99,
+                image: "https://images.unsplash.com/photo-1511499767150-a48a79f55864?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
+                category: "accessories",
+                description: "Classic aviator sunglasses with UV protection."
+            },
+            {
+                id: 35,
+                name: "Wool Beanie",
+                price: 19.99,
+                image: "https://images.unsplash.com/photo-1529958030586-3aae4ca485ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                category: "accessories",
+                description: "Warm wool beanie for cold weather."
+            },
+            {
+                id: 36,
+                name: "Leather Belt",
+                price: 27.99,
+                image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
+                category: "accessories",
+                description: "Genuine leather belt with adjustable buckle."
+            },
+            {
+                id: 37,
+                name: "Backpack",
+                price: 49.99,
+                image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=738&q=80",
+                category: "accessories",
+                description: "Durable backpack with laptop compartment."
+            },
+            {
+                id: 38,
+                name: "Silk Scarf",
+                price: 22.99,
+                image: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80",
+                category: "accessories",
+                description: "Elegant silk scarf with floral pattern."
+            },
+            {
+                id: 39,
+                name: "Baseball Cap",
+                price: 17.99,
+                image: "https://images.unsplash.com/photo-1529958030586-3aae4ca485ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                category: "accessories",
+                description: "Adjustable baseball cap with embroidered logo."
+            },
+            {
+                id: 40,
+                name: "Statement Necklace",
+                price: 34.99,
+                image: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80",
+                category: "accessories",
+                description: "Bold statement necklace for special occasions."
+            }
+        ];
+
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // DOM elements
+        const productsContainer = document.getElementById('products-container');
+        const cartBtn = document.getElementById('cart-btn');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const closeCart = document.getElementById('close-cart');
+        const cartItems = document.getElementById('cart-items');
+        const cartCount = document.getElementById('cart-count');
+        const sidebarCartCount = document.getElementById('sidebar-cart-count');
+        const cartSubtotal = document.getElementById('cart-subtotal');
+        const cartTotal = document.getElementById('cart-total');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const searchBtn = document.getElementById('search-btn');
+        const searchModal = document.getElementById('search-modal');
+        const closeSearch = document.getElementById('close-search');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const quickViewModal = document.getElementById('quick-view-modal');
+        const closeQuickView = document.getElementById('close-quick-view');
+        const quickViewTitle = document.getElementById('quick-view-title');
+        const quickViewImage = document.getElementById('quick-view-image');
+        const quickViewPrice = document.getElementById('quick-view-price');
+        const quickViewDescription = document.getElementById('quick-view-description');
+        const addToCartQuick = document.getElementById('add-to-cart-quick');
+
+        // Current product for quick view
+        let currentProduct = null;
+
+        // Display products
+        function displayProducts(filter = 'all') {
+            productsContainer.innerHTML = '';
+            
+            const filteredProducts = filter === 'all' 
+                ? products 
+                : products.filter(product => product.category === filter);
+            
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300';
+                productCard.dataset.category = product.category;
+                
+                productCard.innerHTML = `
+                    <div class="relative">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover">
+                        <button class="quick-view-btn absolute top-2 right-2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100" data-id="${product.id}">
+                            <i class="fas fa-eye text-gray-700"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">${product.name}</h3>
+                        <p class="text-blue-600 font-bold mb-3">$${product.price.toFixed(2)}</p>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-300" data-id="${product.id}">
+                            Add to Cart
+                        </button>
+                    </div>
+                `;
+                
+                productsContainer.appendChild(productCard);
+            });
+            
+            // Add event listeners to new buttons
+            document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const productId = parseInt(e.target.dataset.id);
+                    addToCart(productId);
+                });
+            });
+            
+            document.querySelectorAll('.quick-view-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const productId = parseInt(e.target.closest('button').dataset.id);
+                    showQuickView(productId);
+                });
+            });
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showCartNotification(product.name);
+        }
+
+        // Show cart notification
+        function showCartNotification(productName) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center';
+            notification.innerHTML = `
+                <i class="fas fa-check-circle mr-2"></i>
+                ${productName} added to cart
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+
+        // Update cart
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            sidebarCartCount.textContent = totalItems;
+            
+            // Update cart items
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                checkoutBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                emptyCartMessage.classList.add('hidden');
+                checkoutBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                
+                cart.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'flex items-center py-4 border-b border-gray-200';
+                    cartItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+                        <div class="ml-4 flex-grow">
+                            <h4 class="font-medium">${item.name}</h4>
+                            <p class="text-gray-600">$${item.price.toFixed(2)} x ${item.quantity}</p>
+                        </div>
+                        <div class="flex items-center">
+                            <button class="decrease-quantity text-gray-500 hover:text-blue-600 p-1" data-id="${item.id}">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="mx-2">${item.quantity}</span>
+                            <button class="increase-quantity text-gray-500 hover:text-blue-600 p-1" data-id="${item.id}">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button class="remove-item text-red-500 hover:text-red-700 ml-4 p-1" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    cartItems.appendChild(cartItem);
+                });
+                
+                // Add event listeners to quantity buttons
+                document.querySelectorAll('.increase-quantity').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.closest('button').dataset.id);
+                        const item = cart.find(item => item.id === productId);
+                        item.quantity += 1;
+                        updateCart();
+                    });
+                });
+                
+                document.querySelectorAll('.decrease-quantity').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.closest('button').dataset.id);
+                        const item = cart.find(item => item.id === productId);
+                        
+                        if (item.quantity > 1) {
+                            item.quantity -= 1;
+                        } else {
+                            cart = cart.filter(item => item.id !== productId);
+                        }
+                        
+                        updateCart();
+                    });
+                });
+                
+                document.querySelectorAll('.remove-item').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.closest('button').dataset.id);
+                        cart = cart.filter(item => item.id !== productId);
+                        updateCart();
+                    });
+                });
+            }
+            
+            // Update totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+            cartTotal.textContent = `$${subtotal.toFixed(2)}`;
+        }
+
+        // Show quick view
+        function showQuickView(productId) {
+            currentProduct = products.find(p => p.id === productId);
+            
+            quickViewTitle.textContent = currentProduct.name;
+            quickViewImage.src = currentProduct.image;
+            quickViewPrice.textContent = `$${currentProduct.price.toFixed(2)}`;
+            quickViewDescription.textContent = currentProduct.description;
+            
+            quickViewModal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        // Initialize the page
+        function init() {
+            displayProducts();
+            updateCart();
+            
+            // Event listeners
+            cartBtn.addEventListener('click', () => {
+                cartSidebar.classList.remove('translate-x-full');
+                document.body.classList.add('overflow-hidden');
+            });
+            
+            closeCart.addEventListener('click', () => {
+                cartSidebar.classList.add('translate-x-full');
+                document.body.classList.remove('overflow-hidden');
+            });
+            
+            searchBtn.addEventListener('click', () => {
+                searchModal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            });
+            
+            closeSearch.addEventListener('click', () => {
+                searchModal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            });
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active', 'bg-blue-100', 'text-blue-600'));
+                    btn.classList.add('active', 'bg-blue-100', 'text-blue-600');
+                    displayProducts(btn.dataset.category);
+                });
+            });
+            
+            closeQuickView.addEventListener('click', () => {
+                quickViewModal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            });
+            
+            addToCartQuick.addEventListener('click', () => {
+                if (currentProduct) {
+                    addToCart(currentProduct.id);
+                }
+            });
+            
+            checkoutBtn.addEventListener('click', () => {
+                if (cart.length > 0) {
+                    alert('Checkout functionality would be implemented here!');
+                }
+            });
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === searchModal) {
+                    searchModal.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+                
+                if (e.target === quickViewModal) {
+                    quickViewModal.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+        }
+
+        // Initialize the page when loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
